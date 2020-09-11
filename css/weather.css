@@ -2,9 +2,63 @@ body{
   display: grid;
   flex-direction: row;
   place-items: center;
+  background-color: #eee;
 }
 
 .center {
   display: grid;
   place-items: center;
+  width: 100%;
+}
+section#search-section{
+  width: 30%;
+}
+input{
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+input:focus{
+  border-color: plum;
+}
+
+section#forecast{
+    padding-top: 15vh;
+}
+
+article#current-forecast{
+    height: 12vh;
+    margin: .5rem;
+    padding: 1.875rem;
+    font-size: 1.2rem;
+    background: #FFFFFF;
+}
+
+.forecast {
+    margin: 0;
+    padding: .3rem;
+    font: 1rem 'Fira Sans', sans-serif;
+    display: inline-flex;
+}
+
+.forecast > h1,
+.day-forecast {
+    height: 15vh;
+    margin: .5rem;
+    padding: 1.875rem;
+    font-size: 1.2rem;
+    background: #FFFFFF;
+    display: grid;
+    flex: auto;
+}
+
+.day-forecast > h2,
+.day-forecast > p {
+    margin: .2rem;
+    font-size: 1rem;
+}
+
+img{
+  padding-top: 0;
 }

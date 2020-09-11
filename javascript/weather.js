@@ -2,12 +2,13 @@ let latitude = null;
 let longitude = null;
 const apiKey = '022654306ede70ed6b2ec578408bca68';
 let openWeatherUrl = '';
-let iconType = '04n';
-let weatherIconUrl = `http://openweathermap.org/img/wn/${iconType}@2x.png`
+let iconType = '';
+let weatherIconUrl = ''
 let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 let currentDate = new Date().toLocaleString(undefined, options);
 let displayDate =  document.querySelector('#currentDate');
-
+let currentDateDescription = document.querySelector('article#current-forecast > p');
+let currentImage = document.querySelector('article > img#currentImage');
 
 async function getWeatherData(url = '') {
   // Default options are marked with *
@@ -26,8 +27,13 @@ async function getWeatherData(url = '') {
             openWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
             getWeatherData(openWeatherUrl).then(data => {
+                let weatherData = JSON.parse(data);
                 displayDate.innerHTML = currentDate;
-                console.log(currentDate, weatherIconUrl, 'from weather data');
+                currentDateDescription.innerHTML = weatherData.current.weather[0].description;
+                iconType = weatherData.current.weather[0].icon;
+                weatherIconUrl = `http://openweathermap.org/img/wn/${iconType}@2x.png`
+                currentImage.setAttribute('src', weatherIconUrl);
+                console.log(currentDate, weatherIconUrl, openWeatherUrl, 'from weather data');
             }).catch( error =>{
                 console.log(error);
             });
