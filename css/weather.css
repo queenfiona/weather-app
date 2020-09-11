@@ -53,7 +53,7 @@ article#current-forecast{
     flex: auto;
 }
 
-.day-forecast > h2,
+.day-forecast > h6,
 .day-forecast > p {
     margin: .2rem;
     font-size: 1rem;
